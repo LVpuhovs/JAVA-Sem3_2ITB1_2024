@@ -8,7 +8,7 @@ public abstract class User extends GuestUser implements IPostService{
 	private String username;
 	//TODO password encoder
 	private String password;
-	private String nameAndSurnameOrTitle;
+	protected String nameAndSurnameOrTitle;
 	
 	public String getUsername() {
 		return username;
