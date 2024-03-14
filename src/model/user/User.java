@@ -2,7 +2,9 @@ package model.user;
 
 import java.security.MessageDigest;
 
-public abstract class User extends GuestUser{
+import Service.IPostService;
+
+public abstract class User extends GuestUser implements IPostService{
 	private String username;
 	//TODO password encoder
 	private String password;
