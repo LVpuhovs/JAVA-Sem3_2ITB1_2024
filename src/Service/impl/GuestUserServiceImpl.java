@@ -33,7 +33,7 @@ public class GuestUserServiceImpl implements IGuestUserService{
 	@Override
 	public ArrayList<Page> findPages(String titleOrDesctription) throws Exception {
 		// TODO Auto-generated method stub
-		if( titleOrDesctription == null || titleOrDesctription.length() < 3 ) throw new Exception("Problems with input");
+		if( titleOrDesctription == null || titleOrDesctription.length() < 2 ) throw new Exception("Problems with input");
 		ArrayList<Page> foundPages = new ArrayList<Page>();
 		for(GuestUser temp: MainService.allUser) {
 			if(temp instanceof BusinessUser) {
@@ -50,9 +50,35 @@ public class GuestUserServiceImpl implements IGuestUserService{
 	}
 
 	@Override
-	public ArrayList<Post> findInfoInPublicPosts(String msg) {
+	public ArrayList<Post> findInfoInPublicPosts(String msg) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		if ( msg == null || msg.length() < 2) throw new Exception("Problems with input");
+		
+		ArrayList<Post> foundPosts = new ArrayList<Post>();
+		
+		for (GuestUser tempU: MainService.allUser) {
+			if(tempU instanceof PrivateUser) {
+				PrivateUser user = (PrivateUser)tempU;
+				for(Post tempP: user.getPublicPosts())
+				{
+					if(tempP.get_msg().toLowerCase().contains(msg.toLowerCase())) {
+						foundPosts.add(tempP);
+					}
+				}
+			}
+			else if(tempU instanceof BusinessUser) {
+				BusinessUser user = (BusinessUser)tempU;
+				for(Page tempPage: user.getListOfPages()) {
+					for(Post tempP : tempPage.getPostsInPage()) {
+						if(tempP.get_msg().toLowerCase().contains(msg.toLowerCase())) {
+							foundPosts.add(tempP);
+						}
+					}
+				}
+				
+			}
+		}
+		return foundPosts;
 	}
 
 }
