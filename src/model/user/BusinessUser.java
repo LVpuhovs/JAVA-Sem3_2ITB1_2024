@@ -26,10 +26,28 @@ public class BusinessUser extends User{
 	@Override
 	public void setNameAndSurnameOrTitle(String nameAndSurnameOrTitle) {
 		// TODO Auto-generated method stub
-		if (nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-za-z0-9%&+@,.!]{3,50"))
+		if (nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-za-z0-9%&+@,.!]{3,50}"))
 			super.nameAndSurnameOrTitle = nameAndSurnameOrTitle;
 		else
 			super.nameAndSurnameOrTitle = "----------------------";
+	}
+	
+	public BusinessUser() {
+		super(); //tiek izsaukts user klases konstruktors
+		setNameAndSurnameOrTitle("Autoserviss");
+		setUsername();
+		setPVN("LV40001234567");
+	}
+	
+	public BusinessUser(String title, String password, String PVN) {
+		super(password);
+		setNameAndSurnameOrTitle(title);
+		setUsername();
+		setPVN(PVN);
+	}
+	
+	public String toString() {
+		return super.toString() + " " + PVN ;
 	}
 
 	@Override

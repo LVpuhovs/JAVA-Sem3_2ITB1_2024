@@ -45,7 +45,7 @@ public class PrivateUser extends User{
 	}
 	
 	public String toString() {
-		return super.toString() + super.nameAndSurnameOrTitle + "(" + super.getUsername() + ")";
+		return super.toString() + "[" +(privatePosts.size() + publicPosts.size()) + " posts]";
 	}
 	
 //other functions

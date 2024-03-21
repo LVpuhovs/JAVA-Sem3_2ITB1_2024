@@ -49,7 +49,7 @@ public abstract class User extends GuestUser implements IPostService{
 	}
 	
 	public String toString() {
-		return super.toString() + ":";
+		return super.toString() + ":" + nameAndSurnameOrTitle + "(" + username + ")";
 	}
 	
 	//TODO login()
