@@ -37,6 +37,10 @@ public class Page {
 		setTitle("Autoserviss Ventspili");
 		setDescription("Autoserviss Ventspili - jaunakaas aktualitates");
 	}
+	public Page(String title, String description) {
+		setTitle(title);
+		setDescription(description);
+	}
 	
 	public String toString() {
 		return title + "(" + description + ")" + followers.size() + " folowers";

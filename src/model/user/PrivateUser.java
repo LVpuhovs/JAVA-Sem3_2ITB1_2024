@@ -50,13 +50,15 @@ public class PrivateUser extends User{
 	
 //other functions
 	@Override
-	public void publishPost(PostType type, String msg) throws Exception {
+	public Post publishPost(PostType type, String msg) throws Exception {
 		// TODO Auto-generated method stub
 		if (type == null && msg == null) throw new Exception("Problems with input");
 		Post newPost = new Post(msg);
 		
 		if ( type.equals(PostType.privatePost)) privatePosts.add(newPost);
 		else if (type.equals(PostType.publicPost)) publicPosts.add(newPost);
+		
+		return newPost;
 	}
 	
 	public void followPrivateUser(User user) throws Exception {

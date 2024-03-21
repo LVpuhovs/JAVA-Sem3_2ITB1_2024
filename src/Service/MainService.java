@@ -3,6 +3,7 @@ package Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import model.Page;
 import model.PostType;
 import model.user.BusinessUser;
 import model.user.GuestUser;
@@ -30,15 +31,42 @@ public class MainService {
 		try {
 			u6.publishPost(PostType.privatePost, "Man nekas nepatilk");
 			u6.publishPost(PostType.publicPost, "Ata!!!");
+			
+			u6.followPrivateUser(u3);
+			u6.followPrivateUser(u7);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("-----------------------------");
 		
 		System.out.println(u6.getUsername() + ": private posts ->");
 		System.out.println(u6.getPrivatePosts());
 		System.out.println(u6.getUsername() + ": public posts ->");
 		System.out.println(u6.getPublicPosts());
+		
+		System.out.println(u6.getUsername() + ": followers");
+		System.out.println(u6.getFollowers());
+		
+		try {
+			u7.createPage("Hesburger Ventspils", "Jaunumi par Hesburgeru Ventspili");
+			u7.createPage("Hesburger Daugavpils", "Jaunumi par Hesburgeru Daugavpili");
+			
+			u7.publishPostsInPage("Hesburger Ventspils", "20% atlaide siera burgeriem");
+			u7.publishPostsInPage("Hesburger Ventspils", "50% atlaide bernu komplektiem");
+			
+			u7.publishPostsInPage("Hesburger Daugavpils", "10% atlaide saldejumam");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("--------------------");
+		System.out.println(u7.getUsername() + ": Pages -> ");
+		for (Page temp: u7.getListOfPages()) {
+			System.out.println(temp + " ->");
+			System.out.println(temp.getPostsInPage());
+			System.out.println();
+		}
 	}
 
 }
