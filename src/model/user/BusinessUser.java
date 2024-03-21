@@ -7,7 +7,7 @@ import model.Post;
 import model.PostType;
 
 public class BusinessUser extends User{
-	private ArrayList<Page> listOfPages = new ArrayList<Page>();
+	public ArrayList<Page> listOfPages = new ArrayList<Page>();
 	private String PVN;
 	
 	public String getPVN() {

@@ -10,7 +10,7 @@ import model.user.GuestUser;
 import model.user.PrivateUser;
 
 public class MainService {
-	private static ArrayList<GuestUser> allUser = new ArrayList<GuestUser>();
+	public static ArrayList<GuestUser> allUser = new ArrayList<GuestUser>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -66,6 +66,22 @@ public class MainService {
 			System.out.println(temp + " ->");
 			System.out.println(temp.getPostsInPage());
 			System.out.println();
+		}
+		
+		System.out.println("Search ->");
+		try {
+			System.out.println(u1 + "->"+ u1.service.findUsers("hesb"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Search pages ->");
+		try {
+			System.out.println(u1 + "->" + u1.service.findPages("jaunumi"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
